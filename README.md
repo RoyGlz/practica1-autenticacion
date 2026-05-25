@@ -44,3 +44,9 @@ Proyecto Laravel 12 con Breeze que implementa autenticación, roles, validacione
 - Validaciones con Form Requests y mensajes personalizados
 - Relaciones: Post → Category, Post ↔ Tags, Post → Comments
 - Autorización con Policies (editar/eliminar solo el autor o admin)
+
+## Práctica 3 - Gestión de Archivos
+- Carga de archivos adjuntos en posts (JPG, PNG, PDF, DOC, DOCX)
+- Máximo 5 archivos por post, 5MB por archivo
+- Servicio reutilizable FileService
+- Eliminación de archivos del storage y base de datos

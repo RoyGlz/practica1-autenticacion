@@ -45,6 +45,29 @@
 
                 <hr class="my-4">
 
+                <h4>Archivos adjuntos</h4>
+                @forelse($post->attachments as $file)
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <div>
+                            <a href="{{ asset('storage/' . $file->path) }}" target="_blank">
+                                {{ $file->original_name }}
+                            </a>
+                            <small class="text-muted">({{ number_format($file->size / 1024, 2) }} KB)</small>
+                        </div>
+                        @can('delete', $post)
+                            <form action="{{ route('attachments.destroy', $file) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button onclick="return confirm('¿Eliminar archivo?')" class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                        @endcan
+                    </div>
+                @empty
+                    <p class="text-muted">Sin archivos adjuntos.</p>
+                @endforelse
+
+                <hr class="my-4">
+
                 <h3>Comentarios ({{ $post->comments->count() }})</h3>
                 @forelse($post->comments as $comment)
                     <div class="card mb-2">

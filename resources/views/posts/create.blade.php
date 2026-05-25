@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
 
-                <form action="{{ route('posts.store') }}" method="POST">
+                <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="mb-3">
@@ -65,6 +65,19 @@
                             class="form-control @error('published_at') is-invalid @enderror"
                             value="{{ old('published_at') }}">
                         @error('published_at') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="attachments" class="form-label">Archivos adjuntos (máx 5, 5MB c/u)</label>
+                        <input type="file" id="attachments" name="attachments[]" multiple
+                            class="form-control @error('attachments.*') is-invalid @enderror"
+                            accept=".jpg,.jpeg,.png,.pdf,.doc,.docx">
+                        @error('attachments.*')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        @error('attachments')
+                            <div class="text-danger small">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <button type="submit" class="btn btn-primary">Crear Post</button>
