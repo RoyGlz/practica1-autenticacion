@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,15 +13,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Rutas de Autenticación de Laravel Breeze (Login, Register, etc.)
+// Rutas generadas por Breeze (autenticación)
 require __DIR__.'/auth.php';
 
-// Rutas protegidas (solo usuarios autenticados)
+// ── Práctica 1: Dashboard con roles ───────────────────────────
 Route::middleware(['auth', 'verified'])->group(function () {
-
-    // Dashboard protegido con rol
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware('role:admin,editor')->name('dashboard');
+});
 
+// ── Práctica 2: CRUD de Posts ──────────────────────────────────
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('posts', PostController::class);
 });
