@@ -50,3 +50,10 @@ Proyecto Laravel 12 con Breeze que implementa autenticación, roles, validacione
 - Máximo 5 archivos por post, 5MB por archivo
 - Servicio reutilizable FileService
 - Eliminación de archivos del storage y base de datos
+
+## Práctica 4 - Panel Administrativo y Auditoría
+- Panel admin con estadísticas (posts, usuarios, comentarios)
+- CRUD administrativo de posts
+- Sistema de auditoría automática con Trait Auditable
+- Registro de create, update y delete con IP y user agent
+- Vistas del historial de cambios por modelo
