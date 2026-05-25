@@ -57,3 +57,10 @@ Proyecto Laravel 12 con Breeze que implementa autenticación, roles, validacione
 - Sistema de auditoría automática con Trait Auditable
 - Registro de create, update y delete con IP y user agent
 - Vistas del historial de cambios por modelo
+
+## Práctica 5 - Factories y Seeders
+- Factories para Category, Post, Comment y Tag con Faker
+- DatabaseSeeder con datos realistas
+- 50 posts con categorías, tags y comentarios
+- Usuario admin creado automáticamente
+- Comando: php artisan migrate:fresh --seed
